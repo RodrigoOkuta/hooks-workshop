@@ -7,17 +7,14 @@ function Films() {
   const { data, loading } = useSwapi('films');
 
   if (loading) {
-    return <div>Loading films...</div>
+    return <div>Loading films...</div>;
   }
 
-  const films = data
-    .results
-    .slice()
-    .sort((a, b) => a.release_date.localeCompare(b.release_date));
+  const films = data.results.slice().sort((a, b) => a.release_date.localeCompare(b.release_date));
 
   return (
     <section className={styles.root}>
-      {films.map(film =>
+      {films.map(film => (
         <div key={film.episode_id} className={styles.film}>
           <header>
             <h2 className={styles.title}>{film.title}</h2>
@@ -34,7 +31,7 @@ function Films() {
             <dd className={styles.itemVal}>{film.release_date}</dd>
           </dl>
         </div>
-      )}
+      ))}
     </section>
   );
 }
